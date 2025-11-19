@@ -1,0 +1,74 @@
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>OBank - O Banco que Entende Você</title>
+	<link type="text/css" rel="stylesheet" href="css/bootstrap.css" />
+	<link type="text/css" rel="stylesheet" href="css/estilos.css" />
+</head>
+
+<body>
+	<div class="container mt-3">
+
+		<!--Cabeçalho -->
+		<header id="cabecalho" class="row">
+			<div class="col-6 d-flex align-items-end">
+				<a href="menu.html">
+					<img src="img/icone.png" alt="logo" class="icone-cabecalho">
+				</a>
+				
+			</div>
+			<div class="col-6 d-flex align-items-end justify-content-end">
+				<span class="fw-bold">Cliente: <span id="nome" class="text-danger">?</span></span>
+			</div>
+		</header>
+
+		<!--Corpo -->
+		<main id="corpo" class="row flex-grow-1 justify-content-center align-items-center text-center">
+			<div class="col-6 col-md-3">
+				<a href="#">
+					<img src="img/contas.png" class="mb-2 icone-corpo">					
+				</a>
+				<p class="fw-semibold mt-1">Contas</p>
+			</div>
+
+			<div class="col-6 col-md-3">
+				<a href="#">
+					<img src="img/operacoes.png" class="mb-2 icone-corpo">					
+				</a>
+				<p class="fw-semibold mt-1">Operações</p>
+			</div>
+
+			<div class="col-6 col-md-3">
+				<a href="#">
+					<img src="img/extrato.png" class="mb-2 icone-corpo">					
+				</a>
+				<p class="fw-semibold mt-2">Extrato</p>
+			</div>
+
+			<div class="col-6 col-md-3">
+				<a href="login.html">
+					<img src="img/sair.png" class="mb-2 icone-corpo">					
+				</a>
+				<p class="fw-semibold mt-2">Sair</p>
+			</div>
+		</main>
+
+		<!--Rodapé -->
+		<footer id="rodape" class="row ">
+			<div class="col d-flex align-items-end justify-content-end">
+				<span class="fw-bold">Saldo total das contas: <span id="saldo" class="text-danger">0</span></span>
+			</div>
+		</footer>
+
+	</div>
+
+	<script type="text/javascript" src="js/jquery.js"></script>
+	<script type="text/javascript" src="js/bootstrap.js"></script>
+	<script type="text/javascript" src="js/jquery.validate.js"></script>
+	<script type="text/javascript" src="js/jquery.mask.js"></script>
+	<script type="text/javascript" src="js/menu.js"></script>
+</body>
+
+</html>

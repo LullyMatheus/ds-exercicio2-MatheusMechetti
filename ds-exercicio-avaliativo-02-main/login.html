@@ -1,0 +1,50 @@
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>OBank - O Banco que Entende Você</title>
+	<link type="text/css" rel="stylesheet" href="css/bootstrap.css" />
+	<link type="text/css" rel="stylesheet" href="css/estilos.css" />
+</head>
+
+<body>
+	<div class="container d-flex flex-column align-items-center mt-5 w-100">
+
+		<img src="img/logo.png" class="mb-3 w-50">
+
+		<form id="formulario" action="#" method="post" class="w-50">
+			<fieldset>
+				<div class="row mb-2">
+					<div class="col-md-12">
+						<label class="form-label" for="cpf">CPF</label>
+						<input class="form-control" id="cpf" name="cpf" type="text" required>
+					</div>
+				</div>
+				<div class="row mb-3">
+					<div class="col-md-12">
+						<label class="form-label" for="senha">Senha</label>
+						<input class="form-control" id="senha" name="senha" type="password" required>
+					</div>
+				</div>
+
+				<div class="row">
+					<div class="col-md-6 d-flex justify-content-start mb-2">
+						<a class="btn btn-primary w-100" href="cliente.html">Cadastrar</a>
+					</div>
+					<div class="col-md-6 d-flex justify-content-end mb-2">
+						<button class="btn btn-success w-100" type="button" onclick="autenticar()">Login</button>
+					</div>
+				</div>
+			</fieldset>
+		</form>
+	</div>
+
+	<script type="text/javascript" src="js/jquery.js"></script>
+	<script type="text/javascript" src="js/bootstrap.js"></script>
+	<script type="text/javascript" src="js/jquery.validate.js"></script>
+	<script type="text/javascript" src="js/jquery.mask.js"></script>
+	<script type="text/javascript" src="js/login.js"></script>
+</body>
+
+</html>

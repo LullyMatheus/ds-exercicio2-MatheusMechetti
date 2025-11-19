@@ -1,0 +1,27 @@
+
+.error {
+	color: red;
+	font-size: 14px; 
+}
+
+.icone-cabecalho{
+	height: 45px;
+}
+
+.icone-corpo{
+	height: 120px;
+}
+
+header{
+	height: 10vh;
+	border-bottom: 3px solid black;
+}
+
+main{
+	height: 80vh;	
+}
+
+footer{
+	height: 6vh;
+	border-bottom: 3px solid black;
+}
