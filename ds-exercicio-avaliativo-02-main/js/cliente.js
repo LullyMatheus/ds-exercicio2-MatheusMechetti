@@ -17,7 +17,7 @@ async  function cadastrar() {
         cliente.senha = $("#senha").val();
 
         try {
-            await fetch("http://18.229.132.2:8888/api/clientes", {
+            await fetch("http://54.233.183.126:8888/api/clientes", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json"
@@ -47,7 +47,7 @@ $("#formulario").validate({
             minlength: 14,
             maxlength: 14,
             remote: {
-                url: "http://18.229.132.2:8888/api/clientes/exists",
+                url: "http://54.233.183.126:8888/api/clientes/exists",
                 type: "GET",
                 data: {
                     cpf: function () {
