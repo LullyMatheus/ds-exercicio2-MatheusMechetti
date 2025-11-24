@@ -15,7 +15,7 @@ async function atualizarSaldo(idCliente) {
     let saldo = 0;
 
     try {
-        let resposta = await fetch("http://18.229.132.2:8888/api/contas/cliente/" + idCliente);
+        let resposta = await fetch("http://54.233.183.126:8888/api/contas/cliente/" + idCliente);
         let contas = await resposta.json();
         contas.forEach(conta => {
             saldo += conta.saldo;
