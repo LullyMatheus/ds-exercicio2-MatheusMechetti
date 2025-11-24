@@ -16,7 +16,7 @@ async function autenticar() {
         cliente.senha = $("#senha").val();
 
         try {
-            let resposta = await fetch("http://18.229.132.2:8888/api/clientes/login", {
+            let resposta = await fetch("http://54.233.183.126:8888/api/clientes/login", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json"
