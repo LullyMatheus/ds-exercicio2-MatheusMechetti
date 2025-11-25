@@ -34,5 +34,35 @@ async function atualizarSaldo(idCliente) {
     const texto = 'R$ ' + formatter.format(saldo);
     $("#saldo").text(saldo);
 
+    //Adicionando código a partir de aqui
+
+    function carregarContas() {
+    // 1. Pega o ID do cliente que está na memória do navegador
+    var idCliente = sessionStorage.getItem("idUsuarioLogado"); 
+
+    // AJAX
+    $.ajax({
+        // Olha a URL
+        url: "http://18.229.132.2:8888/api/contas/cliente/" + idCliente,
+        
+        method: "GET", // usar o metodo GET
+        
+        success: function(listaDeContas) {
+            // Aqui 'listaDeContas' é o array que veio do servidor
+            // Ex: [{numero: "JS-123", saldo: 100}, {numero: "JS-456", saldo: 500}]
+            
+            listaDeContas.forEach(function(conta) {
+                $("#minhaTabelaDeContas").append(
+                    "<tr><td>" + conta.numero + "</td><td>R$ " + conta.saldo + "</td></tr>"
+                );
+            });
+        },
+        
+        error: function(erro) {
+            alert("Não consegui buscar as contas!");
+        }
+    });
+}
+
 }
 
