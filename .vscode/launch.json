@@ -1,0 +1,14 @@
+{
+    "configurations": [
+        {
+            "type": "java",
+            "name": "Spring Boot-DsExemplo05Application<ds_exemplo05>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "mainClass": "com.cefet.ds_exemplo05.DsExemplo05Application",
+            "projectName": "ds_exemplo05",
+            "args": "",
+            "envFile": "${workspaceFolder}/.env"
+        }
+    ]
+}
