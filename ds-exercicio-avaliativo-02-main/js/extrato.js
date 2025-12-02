@@ -1,40 +1,98 @@
 const API_URL = "http://localhost:8888/api";
+
+// 1. Recupera o usuário logado e preenche o cabeçalho
 let usuarioLogado = JSON.parse(sessionStorage.getItem("usuarioLogado"));
+if (!usuarioLogado) {
+    // Fallback para testes caso abra o arquivo direto
+    usuarioLogado = { id: 1, nome: "Teste da Silva" };
+}
 
-// Se não tiver usuário (para testes), cria um fake
-if (!usuarioLogado) usuarioLogado = { id: 1, nome: "Teste" };
+// Preenche o nome no cabeçalho
+$("#nome").text(usuarioLogado.nome);
 
-async function carregarContasNoSelect() {
+$(document).ready(function() {
+    
+    // 2. Carrega as contas no Select assim que abre a tela
+    carregarContas();
+
+    // 3. Configura o botão "Gerar"
+    // Como seu botão não tem ID, pegamos pelo tipo "submit"
+    $("input[type='submit']").click(function() {
+        const idConta = $("#selectConta").val();
+        
+        if(idConta) {
+            carregarExtrato(idConta);
+        } else {
+            alert("Por favor, selecione uma conta primeiro.");
+        }
+    });
+});
+
+// --- FUNÇÃO 1: CARREGAR CONTAS (Igual às outras páginas) ---
+async function carregarContas() {
     try {
-        // 1. Busca as contas do cliente na API
         const resposta = await fetch(`${API_URL}/contas/cliente/${usuarioLogado.id}`);
-        const listaContas = await resposta.json();
+        const lista = await resposta.json();
 
-        // 2. Limpa o select e adiciona a opção padrão
         const select = $("#selectConta");
         select.empty();
         select.append('<option value="" disabled selected>Selecione uma conta</option>');
 
-        // 3. Percorre a lista e cria as opções
-        listaContas.forEach(conta => {
-            // O value guarda o ID (importante para o envio depois)
-            // O texto mostra o Número e o Saldo (para o usuário ver)
-            const htmlOpcao = `
-                <option value="${conta.id}">
-                    ${conta.numero} (Saldo: R$ ${conta.saldo})
-                </option>
-            `;
-            
-            select.append(htmlOpcao);
+        lista.forEach(conta => {
+            select.append(`<option value="${conta.id}">Conta: ${conta.numero}</option>`);
         });
 
     } catch (erro) {
-        console.error("Erro ao buscar contas:", erro);
-        alert("Não foi possível carregar as contas.");
+        console.error("Erro ao carregar contas:", erro);
+        alert("Erro ao buscar as contas.");
     }
 }
 
-// Chama a função assim que a tela abre
-$(document).ready(function() {
-    carregarContasNoSelect();
-});
+// --- FUNÇÃO 2: GERAR O EXTRATO ---
+async function carregarExtrato(idConta) {
+    try {
+        // Limpa a tabela e avisa que está buscando
+        $("#corpoTabelaContas").html('<tr><td colspan="3">Carregando...</td></tr>');
+
+        // Chama a API de lançamentos
+        const resposta = await fetch(`${API_URL}/lancamentos/conta/${idConta}`);
+        
+        if (!resposta.ok) throw new Error("Erro na API");
+
+        const lancamentos = await resposta.json();
+
+        // Limpa a mensagem de carregando
+        $("#corpoTabelaContas").empty();
+
+        if (lancamentos.length === 0) {
+            $("#corpoTabelaContas").html('<tr><td colspan="3">Nenhum lançamento encontrado.</td></tr>');
+            return;
+        }
+
+        // Preenche a tabela
+        lancamentos.forEach(item => {
+            // Define a cor (Vermelho para Saque, Verde para Depósito)
+            const cor = item.tipo === "SAQUE" ? "red" : "green";
+            
+            // Tratamento da data (caso venha vazia ou precise formatar)
+            // Se a API retornar array [2023, 11, 25], o JS mostra vírgulas. 
+            // Se retornar string "2023-11-25", aparece normal.
+            const dataExibicao = item.data || "Data não inf.";
+
+            const linha = `
+                <tr>
+                    <td>${dataExibicao}</td>
+                    <td style="color: ${cor}; font-weight: bold;">
+                        R$ ${item.valor.toFixed(2)}
+                    </td>
+                    <td>${item.tipo}</td>
+                </tr>
+            `;
+            $("#corpoTabelaContas").append(linha);
+        });
+
+    } catch (erro) {
+        console.error("Erro ao carregar extrato:", erro);
+        $("#corpoTabelaContas").html('<tr><td colspan="3" style="color:red">Erro ao carregar dados.</td></tr>');
+    }
+}
