@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <link type="text/css" rel="stylesheet" href="css/bootstrap.css" />
     <link type="text/css" rel="stylesheet" href="css/estilos.css" />
     <title>Extrato</title>
 </head>
@@ -25,11 +25,11 @@
 
     <h1>Extratos</h1>
     <p>Nessa página, você terá acesso ao extrato bancário de cada uma de suas contas</p>
-    <br>
 
     <select id="selectConta" name="contas" required>
         <option value="" disabled selected>Carregando contas...</option>
     </select>
+    <br><br>
 
     <table border="1px" style="text-align: center; width: 100%;">
     <thead>
@@ -43,9 +43,10 @@
         <!-- Linhas serão inseridas aqui automaticamente -->
     </tbody>
 </table>
+<br>
 
 <input type="submit" value="Gerar">
-
+    <script type="text/javascript" src="js/jquery.js"></script>
     <script type="text/javascript" src="js/extrato.js"></script>
     
 </body>

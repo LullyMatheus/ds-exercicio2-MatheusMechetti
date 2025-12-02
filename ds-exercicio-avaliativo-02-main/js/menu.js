@@ -38,7 +38,7 @@ async function atualizarSaldo(idCliente) {
 
     function carregarContas() {
     // 1. Pega o ID do cliente que está na memória do navegador
-    var idCliente = sessionStorage.getItem("idUsuarioLogado"); 
+    var idCliente = localStorage.getItem("idUsuarioLogado"); 
 
     // AJAX
     $.ajax({

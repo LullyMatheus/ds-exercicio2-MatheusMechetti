@@ -1,18 +1,25 @@
 const API_URL = "http://localhost:8888/api";
 
-// 1. Recupera o usuário logado e preenche o cabeçalho
-let usuarioLogado = JSON.parse(sessionStorage.getItem("usuarioLogado"));
 
-// Preenche o nome no cabeçalho
-$("#nome").text(usuarioLogado.nome);
 
 $(document).ready(function() {
     
+
+    let usuarioLogado = JSON.parse(localStorage.getItem("clienteAutenticado"));
+
+    if (!localStorage.clienteAutenticado) {
+        alert("Acesso negado.");
+        window.location.href = "login.html";
+    } else {
+        var cliente = JSON.parse(localStorage.getItem('clienteAutenticado'));
+        var primeiroNome = cliente.nome.substr(0, cliente.nome.indexOf(' '));
+        $("#nome").text(primeiroNome);
+    }
+    
     // 2. Carrega as contas no Select assim que abre a tela
-    carregarContas();
+    carregarContas(usuarioLogado.id);
 
     // 3. Configura o botão "Gerar"
-    // Como seu botão não tem ID, pegamos pelo tipo "submit"
     $("input[type='submit']").click(function() {
         const idConta = $("#selectConta").val();
         
@@ -25,9 +32,10 @@ $(document).ready(function() {
 });
 
 // --- FUNÇÃO 1: CARREGAR CONTAS (Igual às outras páginas) ---
-async function carregarContas() {
+async function carregarContas(id) {
+    
     try {
-        const resposta = await fetch(`${API_URL}/contas/cliente/${usuarioLogado.id}`);
+        const resposta = await fetch(`${API_URL}/contas/cliente/${id}`);
         const lista = await resposta.json();
 
         const select = $("#selectConta");

@@ -1,8 +1,22 @@
 const API_URL = "http://localhost:8888/api";
-let usuarioLogado = JSON.parse(sessionStorage.getItem("usuarioLogado"));
+let usuarioLogado = JSON.parse(localStorage.getItem("usuarioLogado"));
 
 // usuario que pode ser usado para testes
 if (!usuarioLogado) usuarioLogado = { id: 1, nome: "Teste" };
+
+
+//eu copiei o codigo abaixo do arquivo menu.js
+$(document).ready(function () {
+    if (!localStorage.clienteAutenticado) {
+        alert("Acesso negado.");
+        window.location.href = "login.html";
+    } else {
+        var cliente = JSON.parse(localStorage.getItem('clienteAutenticado'));
+        var primeiroNome = cliente.nome.substr(0, cliente.nome.indexOf(' '));
+        $("#nome").text(primeiroNome);
+    }
+
+})
 
 async function carregarContasNoSelect() {
     try {
