@@ -6,162 +6,31 @@
     <title>OBank - Contas</title>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     
-    <style>
-        /* Reset e Fontes */
-        * {
-            box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        }
-
-        body {
-            margin: 20px;
-            background-color: #fff;
-            padding: 20px;
-        }
-
-        /* --- TÍTULO --- */
-        h2 {
-            margin-bottom: 20px;
-            font-size: 24px;
-            font-weight: bold;
-        }
-
-        /* --- TABELA ESTILO WIREFRAME --- */
-        .table-container {
-            width: 100%;
-            border: 3px solid #000; /* Borda grossa externa */
-            border-radius: 4px; /* Leve arredondamento nos cantos externos */
-            overflow: hidden; /* Garante que o conteúdo não vaze das bordas arredondadas */
-        }
-
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            font-size: 18px;
-        }
-
-        /* Cabeçalho da Tabela */
-        thead tr {
-            background-color: #bfbfbf; /* Cinza escuro do cabeçalho */
-            border-bottom: 3px solid #000;
-        }
-
-        th {
-            text-align: left;
-            padding: 10px 15px;
-            font-weight: bold;
-            border-right: 3px solid #000; /* Divisória vertical grossa */
-        }
-        
-        /* Remove a borda direita do último item do cabeçalho */
-        th:last-child {
-            border-right: none;
-        }
-
-        /* Corpo da Tabela */
-        td {
-            padding: 10px 15px;
-            border-right: 3px solid #000; /* Divisória vertical grossa */
-        }
-
-        td:last-child {
-            border-right: none;
-        }
-
-        /* Cores alternadas das linhas (Zebrado) conforme a imagem */
-        tbody tr:nth-child(odd) {
-            background-color: #e6e6e6; /* Cinza claro na primeira linha */
-        }
-
-        tbody tr:nth-child(even) {
-            background-color: #fff; /* Branco na segunda linha */
-        }
-
-        /* Linhas horizontais internas (se houver mais de uma linha) */
-        tbody tr {
-            border-bottom: 3px solid #000;
-        }
-        
-        /* Remove a borda da última linha para não duplicar com a borda do container */
-        tbody tr:last-child {
-            border-bottom: none;
-        }
-
-        /* --- BOTÃO CRIAR CONTA --- */
-        .action-bar {
-            display: flex;
-            justify-content: flex-end; /* Alinha à direita */
-            margin-top: 15px;
-        }
-
-        .btn-criar {
-            background-color: #fff;
-            border: 3px solid #000;
-            padding: 8px 30px;
-            font-size: 18px;
-            font-weight: bold;
-            cursor: pointer;
-            box-shadow: 4px 4px 0px #000; /* Sombra sólida estilo desenho */
-            transition: transform 0.1s;
-        }
-
-        .btn-criar:active {
-            transform: translate(2px, 2px);
-            box-shadow: 2px 2px 0px #000;
-        }
-
-    </style>
 </head>
 <body>
 
-    <!-- Título -->
     <h2>Contas</h2>
 
-    <!-- Tabela -->
-    <div class="table-container">
-        <table id="tabelaContas">
-            <thead>
-                <tr>
-                    <th>Número da conta</th>
-                    <th>Saldo</th>
-                </tr>
-            </thead>
-            <tbody>
-                <!-- Exemplo Estático (Idêntico à Imagem) -->
-                <tr>
-                    <td>MA-120214</td>
-                    <td>2300.00</td>
-                </tr>
-                <tr>
-                    <td>MA-548745</td>
-                    <td>1050.00</td>
-                </tr>
-            </tbody>
-        </table>
-    </div>
+<table border="1px" style="text-align: center; width: 100%;">
+    <thead>
+        <tr>
+            <th style="width:60%">Numero da Conta</th>
+            <th>Saldo</th>
+        </tr>
+    </thead>
+    <!-- O JavaScript vai preencher este corpo aqui -->
+    <tbody id="corpoTabelaContas">
+        <!-- Linhas serão inseridas aqui automaticamente -->
+    </tbody>
+</table>
 
     <!-- Botão Inferior -->
+    <br>
     <div class="action-bar">
         <button id="btnCriarConta" class="btn-criar">Criar conta</button>
     </div>
 
-    <script>
-        // Apenas um exemplo de clique para testar
-        $("#btnCriarConta").click(function() {
-            // Aqui você chamará sua função da API futuramente
-            alert("Chamando API para criar nova conta...");
-            
-            // Exemplo visual de como adicionar uma linha nova via JQuery:
-            /*
-            $("#tabelaContas tbody").append(`
-                <tr>
-                    <td>NOVA-CONTA</td>
-                    <td>0.00</td>
-                </tr>
-            `);
-            */
-        });
-    </script>
+    <script type="text/javascript" src="js/contas.js"></script>
 
 </body>
 </html>
