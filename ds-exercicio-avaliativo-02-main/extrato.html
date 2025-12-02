@@ -3,14 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>OBank - Contas</title>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <link type="text/css" rel="stylesheet" href="css/estilos.css" />
-    
+    <title>Extrato</title>
 </head>
 <body>
 
-    <!--Cabeçalho igual ao do Odilon -->
+    
+	<!--Cabeçalho igual ao do Odilon -->
 	<header id="cabecalho" class="row">
 		<div class="col-6 d-flex align-items-end">
 			<a href="menu.html">
@@ -23,27 +23,15 @@
 		</div>
 	</header>
 
-    <h2>Contas</h2>
-
-<table border="1px" style="text-align: center; width: 100%;">
-    <thead>
-        <tr>
-            <th style="width:60%">Numero da Conta</th>
-            <th>Saldo</th>
-        </tr>
-    </thead>
-    <tbody id="corpoTabelaContas">
-        <!-- Linhas serão inseridas aqui automaticamente -->
-    </tbody>
-</table>
-
-    <!-- Botão Inferior -->
+    <h1>Extratos</h1>
+    <p>Nessa página, você terá acesso ao extrato bancário de cada uma de suas contas</p>
     <br>
-    <div class="action-bar">
-        <button id="btnCriarConta" class="btn-criar">Criar conta</button>
-    </div>
 
-    <script type="text/javascript" src="js/contas.js"></script>
+    <select id="selectConta" name="contas" required>
+        <option value="" disabled selected>Carregando contas...</option>
+    </select>
 
+    <script type="text/javascript" src="js/extrato.js"></script>
+    
 </body>
 </html>
