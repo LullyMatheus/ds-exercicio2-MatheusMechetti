@@ -2,10 +2,6 @@ const API_URL = "http://localhost:8888/api";
 
 // 1. Recupera o usuário logado e preenche o cabeçalho
 let usuarioLogado = JSON.parse(sessionStorage.getItem("usuarioLogado"));
-if (!usuarioLogado) {
-    // Fallback para testes caso abra o arquivo direto
-    usuarioLogado = { id: 1, nome: "Teste da Silva" };
-}
 
 // Preenche o nome no cabeçalho
 $("#nome").text(usuarioLogado.nome);
