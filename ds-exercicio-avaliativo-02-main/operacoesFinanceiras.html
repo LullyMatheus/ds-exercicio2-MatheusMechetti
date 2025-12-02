@@ -2,15 +2,38 @@
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=], initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Operações</title>
 </head>
 <body>
 
-<select name="operacoes">
-  <option value="saque">Saque</option>
-  <option value="deposito">Depósito</option>
-</select> 
+<main>
+    <form id="formOperacao">
+        <label for="selectConta">Escolha a Conta:</label>
+        <select id="selectConta" name="contas" required>
+            <option value="" disabled selected>Carregando contas...</option>
+        </select>
+
+        <br>
+        <br>
+
+        <label for="selectTipo">Escolha uma operação</label>
+        <select id="selectTipo" name="tipo" required>
+            <option value="SAQUE">Saque</option>
+            <option value="DEPOSITO">Depósito</option>
+        </select> 
+
+        <br>
+        <br>
+
+        <label for="campoValor">Valor:</label>
+        <input id="campoValor" type="number" step="0.01" placeholder="Ex: 100.00" required>
+
+        <br>
+        <br>
+        <input type="submit" value="Enviar">
+    </form>
+</main>
     
 </body>
 </html>
